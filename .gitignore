@@ -1,0 +1,15 @@
+# Ignore everything
+*
+
+# Allow directories (important!)
+!*/
+
+# Allow specific file types
+!*.ipynb
+!*.py
+!*.yaml
+!.gitignore
+!*.txt
+!*.toml
+!*.png
+!*.md
