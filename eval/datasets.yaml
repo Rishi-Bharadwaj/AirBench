@@ -1,0 +1,57 @@
+datasets:
+  CPCB/H:
+    test_length: 17376   # 2 years - 168
+    # test_length: 1440
+    val_length: 0
+    short:
+      prediction_length: 24  # 1 week
+
+  EPA/H:
+    test_length: 17376   # 2 years - 168
+    # test_length: 1440
+    val_length: 0
+    short:
+      prediction_length: 24  # 1 week
+
+
+  AURN/H:
+    test_length: 17376   # 2 years - 168
+    # test_length: 1440
+    val_length: 0
+    short:
+      prediction_length: 24  # 1 week
+
+
+  CNEMC/H:
+    test_length: 17376   # 2 years - 168
+    # test_length: 1440
+    val_length: 0
+    short:
+      prediction_length: 24  # 1 week
+
+  SINAICA/H:
+    test_length: 17376   # 2 years - 168
+    # test_length: 1440
+    val_length: 0
+    short:
+      prediction_length: 24  # 1 week
+
+  EEA_DE/H:
+    test_length: 17376   # 2 years - 168
+    # test_length: 1440
+    val_length: 0
+    short:
+      prediction_length: 24  # 1 week
+
+  EEA_FR/H:
+    test_length: 17376   # 2 years - 168
+    # test_length: 1440
+    val_length: 0
+    short:
+      prediction_length: 24  # 1 week
+
+  CNEMC_SMALL/H:
+    test_length: 17376
+    val_length: 0
+    short:
+      prediction_length: 24
