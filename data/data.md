@@ -1,6 +1,16 @@
 # Data Pipeline
 
-All scripts are configured via `data.yaml`, which contains paths and parameters for each network and each pipeline stage. Run all scripts from the `data/` directory.
+All scripts are configured via `data.yaml`, which contains paths and parameters for each network and each pipeline stage. **Run all scripts from the project root** (`AtmoBench/`), since paths in `data.yaml` are relative to it.
+
+### Example
+
+```bash
+# from the project root
+python data/data_preprocess_scripts/aurn_preprocess.py data/data.yaml
+python data/visualise.py data/data.yaml aurn
+python data/imputation.py data/data.yaml aurn
+python data/aq_dataset_builder.py --config data/data.yaml --dataset AURN/H
+```
 
 ---
 
@@ -56,14 +66,15 @@ Configure input/output paths in the relevant section of `data.yaml` before runni
 
 **AURN note:** Raw files are in R's `.RData` format. `aurn_preprocess.py` uses the `rdata` Python package to convert them to DataFrames without requiring an R installation.
 
-**CNEMC note:** A station list spreadsheet (`站点列表-2022.02.13起.xlsx`) is required to map station codes to metadata. `china_sampling.ipynb` can be used to create a random subsample of stations for faster iteration.
+**CNEMC note:** A station list spreadsheet (`站点列表-2022.02.13起.xlsx`) is required to map station codes to metadata. This is available on zenodo in our dataset.
+`china_sampling.ipynb` can be used to create a random subsample of stations for faster iteration.
 
 ---
 
 ## Stage 3 — Visualise
 
 ```bash
-python visualise.py --dataset <network_key>
+python data/visualise.py data/data.yaml <network_key>
 ```
 
 Produces a heatmap for each pollutant showing all stations on the y-axis and time on the x-axis. Colour encodes concentration; white cells are missing data. Stations are sorted by amount of missing data so gaps are easy to spot.
@@ -75,7 +86,7 @@ Output images are saved to the `image_dir` path in `data.yaml`. The script also 
 ## Stage 4 — Impute
 
 ```bash
-python imputation.py --dataset <network_key>
+python data/imputation.py data/data.yaml <network_key>
 ```
 
 Two-step filtering and gap-filling:
@@ -99,9 +110,9 @@ Runs in parallel across stations using `ProcessPoolExecutor` (`max_workers` set 
 ## Stage 5 — Build HuggingFace Dataset
 
 ```bash
-python aq_dataset_builder.py --config data.yaml
+python data/aq_dataset_builder.py --config data/data.yaml
 # or a specific network:
-python aq_dataset_builder.py --config data.yaml --dataset CPCB/H
+python data/aq_dataset_builder.py --config data/data.yaml --dataset CPCB/H
 ```
 
 Reads the `sources` section of `data.yaml`, which maps dataset names to imputed CSV directories and output paths. Converts each directory of per-station CSVs into a HuggingFace Arrow dataset (univariate series format) readable by the evaluation harness.

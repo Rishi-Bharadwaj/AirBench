@@ -55,10 +55,26 @@ The `short` horizon is the only one currently configured. `test_length: 17376` c
 
 ---
 
+## Setup
+
+Install all dependencies from the project root, then run eval scripts from `eval/`:
+
+```bash
+# from the project root
+uv sync --extra eval        # installs base + eval deps into AtmoBench/.venv
+source .venv/bin/activate   # activate before running anything in eval/
+
+cd eval
+```
+
+> `run.py` looks for `.venv` inside `eval/`. Since the venv is at the project root, activate it first so that `python` and `uv pip install` both resolve to the right environment.
+
+---
+
 ## Running Experiments
 
 ```bash
-cd eval
+# from eval/ (with venv activated)
 
 # Run all enabled models on all default datasets
 python run.py --config config.yaml
@@ -84,7 +100,7 @@ python run.py --config config.yaml model=chronos_bolt dataset=CPCB/H
    - Launches the experiment script as a subprocess with `TIME_DATASET` set to `data_dir`.
 4. Collects exit codes and prints a summary of any failures at the end.
 
-The runner does not create separate venvs per model — all packages share the same venv. Kairos is the exception and requires a separate venv (see Setup in the main README).
+The runner does not create separate venvs per model — all packages share the same venv.
 
 ### Results layout
 

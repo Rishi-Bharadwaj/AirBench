@@ -1,21 +1,21 @@
 epa:
   preprocess:
     zip: true
-    zip_path:     /home/rishi/ML Projects/AirBench/Datasets/epa_data
-    unzip_dir: /home/rishi/ML Projects/AirBench/EPA/unzip_dir
-    by_year_by_site_dir: /home/rishi/ML Projects/AirBench/EPA/epa_data_by_site_by_year
-    by_site_all_years_dir: /home/rishi/ML Projects/AirBench/EPA/processed
+    zip_path:     data/datasets/epa_data
+    unzip_dir: data/EPA/unzip_dir
+    by_year_by_site_dir: data/EPA/epa_data_by_site_by_year
+    by_site_all_years_dir: data/EPA/processed
     target_start: "2022-07-01 00:00:00"
     target_end:   "2025-06-30 23:00:00"
 
   visualise:
     make_dicts: true
-    folder: /home/rishi/ML Projects/AirBench/EPA/processed
+    folder: data/EPA/processed
     date_range:
       start: "2022-07-01 00:00:00"
       end:   "2025-06-30 23:00:00"
     output:
-      dicts_dir: /home/rishi/ML Projects/AirBench/EPA/vis_dicts
+      dicts_dir: data/EPA/vis_dicts
       image_dir:  visualize_epa_images
     features:
       - "PM2.5 (µg/m³)"
@@ -33,9 +33,9 @@ epa:
       "Ozone (µg/m³)": 100
     
   imputation:
-    dicts_dir: /home/rishi/ML Projects/AirBench/EPA/vis_dicts
-    input_dir: /home/rishi/ML Projects/AirBench/EPA/processed
-    output_dir: /home/rishi/ML Projects/AirBench/EPA/imputed
+    dicts_dir: data/EPA/vis_dicts
+    input_dir: data/EPA/processed
+    output_dir: data/EPA/imputed
     max_gap_hours: 336
     max_data_missing: 30
     max_workers: 24
@@ -54,21 +54,21 @@ epa:
 cpcb:
   preprocess:
     zip: false
-    zip_path:     /mnt/2TB_WD/rishi/cpcb_data.zip
-    unzip_dir:    /home/rishi/ML Projects/AirBench/Datasets/cpcb_data
-    input_folder: /home/rishi/ML Projects/AirBench/Datasets/cpcb_data
-    output_dir:   /home/rishi/ML Projects/AirBench/CPCB/processed
+    zip_path:     data/datasets/cpcb_data.zip
+    unzip_dir:    data/datasets/cpcb_data
+    input_folder: data/datasets/cpcb_data
+    output_dir:   data/CPCB/processed
     max_workers:  24
 
 
   visualise:
     make_dicts: true
-    folder: /home/rishi/ML Projects/AirBench/CPCB/processed
+    folder: data/CPCB/processed
     date_range:
       start: "2022-07-01 00:00:00"
       end:   "2025-06-30 23:00:00"
     output:
-      dicts_dir: /home/rishi/ML Projects/AirBench/CPCB/vis_dicts
+      dicts_dir: data/CPCB/vis_dicts
       image_dir:  visualize_cpcb_images
     features:
       - "PM2.5 (µg/m³)"
@@ -86,9 +86,9 @@ cpcb:
       "Ozone (µg/m³)": 160
 
   imputation:
-    dicts_dir: /home/rishi/ML Projects/AirBench/CPCB/vis_dicts
-    input_dir: /home/rishi/ML Projects/AirBench/CPCB/processed
-    output_dir: /home/rishi/ML Projects/AirBench/CPCB/imputed
+    dicts_dir: data/CPCB/vis_dicts
+    input_dir: data/CPCB/processed
+    output_dir: data/CPCB/imputed
     max_gap_hours: 336
     max_data_missing: 30
     max_workers: 24
@@ -107,24 +107,24 @@ cpcb:
 aurn:
   preprocess:
     zip: false
-    zip_path:         /mnt/2TB_WD/rishi/aurn.zip
-    unzip_dir:        /mnt/2TB_WD/rishi/aurn
+    zip_path:         data/datasets/aurn.zip
+    unzip_dir:        data/datasets/aurn
     rdata_conversion: true
-    rdata_dir:        /home/rishi/ML Projects/AirBench/Datasets/aurn_data
-    csv_dir:          /home/rishi/ML Projects/AirBench/AURN/aurn_csv
-    output_dir:       /home/rishi/ML Projects/AirBench/AURN/processed
+    rdata_dir:        data/datasets/aurn_data
+    csv_dir:          data/AURN/aurn_csv
+    output_dir:       data/AURN/processed
     date_start:       "2022-07-01 00:00:00"
     date_end:         "2025-06-30 23:00:00"
     max_workers:      24
 
   visualise:
     make_dicts: true
-    folder: /home/rishi/ML Projects/AirBench/AURN/processed
+    folder: data/AURN/processed
     date_range:
       start: "2022-07-01 00:00:00"
       end:   "2025-06-30 23:00:00"
     output:
-      dicts_dir: /home/rishi/ML Projects/AirBench/AURN/vis_dicts
+      dicts_dir: data/AURN/vis_dicts
       image_dir:  visualize_aurn_images
     features:
       - "PM2.5 (µg/m³)"
@@ -142,9 +142,9 @@ aurn:
       "Ozone (µg/m³)": 100
 
   imputation:
-    dicts_dir: /home/rishi/ML Projects/AirBench/AURN/vis_dicts
-    input_dir: /home/rishi/ML Projects/AirBench/AURN/processed
-    output_dir: /home/rishi/ML Projects/AirBench/AURN/imputed
+    dicts_dir: data/AURN/vis_dicts
+    input_dir: data/AURN/processed
+    output_dir: data/AURN/imputed
     max_gap_hours: 336
     max_data_missing: 30
     max_workers: 24
@@ -164,9 +164,9 @@ eea:
   preprocess:
     convert_parquet: true
     download_folders:
-      e1a: /home/rishi/ML Projects/AirBench/eea/urlso
-      e2a: /home/rishi/ML Projects/AirBench/eea/urls1
-    base_out_dir: /home/rishi/ML Projects/AirBench/EEA
+      e1a: data/datasets/eea/urlso
+      e2a: data/datasets/eea/urls1
+    base_out_dir: data/EEA
     start_date:   "2022-07-01 00:00:00"
     end_date:     "2025-06-30 23:00:00"
     max_workers:  24
@@ -175,12 +175,12 @@ eea:
 eea_fr:
   visualise:
     make_dicts: true
-    folder: /home/rishi/ML Projects/AirBench/EEA/FR/processed
+    folder: data/EEA/FR/processed
     date_range:
       start: "2022-07-01 00:00:00"
       end:   "2025-06-30 23:00:00"
     output:
-      dicts_dir: /home/rishi/ML Projects/AirBench/EEA/FR/vis_dicts
+      dicts_dir: data/EEA/FR/vis_dicts
       image_dir:  visualize_eea_fr_images
     features:
       - "PM2.5 (µg/m³)"
@@ -198,9 +198,9 @@ eea_fr:
       "Ozone (µg/m³)": 100
 
   imputation:
-    dicts_dir: /home/rishi/ML Projects/AirBench/EEA/FR/vis_dicts
-    input_dir: /home/rishi/ML Projects/AirBench/EEA/FR/processed
-    output_dir: /home/rishi/ML Projects/AirBench/EEA/FR/imputed
+    dicts_dir: data/EEA/FR/vis_dicts
+    input_dir: data/EEA/FR/processed
+    output_dir: data/EEA/FR/imputed
     max_gap_hours: 336
     max_data_missing: 30
     max_workers: 24
@@ -219,12 +219,12 @@ eea_fr:
 eea_de:
   visualise:
     make_dicts: true
-    folder: /home/rishi/ML Projects/AirBench/EEA/DE/processed
+    folder: data/EEA/DE/processed
     date_range:
       start: "2022-07-01 00:00:00"
       end:   "2025-06-30 23:00:00"
     output:
-      dicts_dir: /home/rishi/ML Projects/AirBench/EEA/DE/vis_dicts
+      dicts_dir: data/EEA/DE/vis_dicts
       image_dir:  visualize_eea_de_images
     features:
       - "PM2.5 (µg/m³)"
@@ -242,9 +242,9 @@ eea_de:
       "Ozone (µg/m³)": 100
 
   imputation:
-    dicts_dir: /home/rishi/ML Projects/AirBench/EEA/DE/vis_dicts
-    input_dir: /home/rishi/ML Projects/AirBench/EEA/DE/processed
-    output_dir: /home/rishi/ML Projects/AirBench/EEA/DE/imputed
+    dicts_dir: data/EEA/DE/vis_dicts
+    input_dir: data/EEA/DE/processed
+    output_dir: data/EEA/DE/imputed
     max_gap_hours: 336
     max_data_missing: 30
     max_workers: 24
@@ -262,19 +262,19 @@ eea_de:
 
 sinaica:
   preprocess:
-    output_dir:  /home/rishi/ML Projects/AirBench/SINAICA/processed
+    output_dir:  data/SINAICA/processed
     date_start:  "2022-07-01 00:00:00"
     date_end:    "2025-06-30 23:00:00"
     max_workers: 24
 
   visualise:
     make_dicts: true
-    folder: /home/rishi/ML Projects/AirBench/SINAICA/processed
+    folder: data/SINAICA/processed
     date_range:
       start: "2022-07-01 00:00:00"
       end:   "2025-06-30 23:00:00"
     output:
-      dicts_dir: /home/rishi/ML Projects/AirBench/SINAICA/vis_dicts
+      dicts_dir: data/SINAICA/vis_dicts
       image_dir:  visualize_sinaica_images
     features:
       - "PM2.5 (µg/m³)"
@@ -292,9 +292,9 @@ sinaica:
       "Ozone (µg/m³)": 100
 
   imputation:
-    dicts_dir:        /home/rishi/ML Projects/AirBench/SINAICA/vis_dicts
-    input_dir:        /home/rishi/ML Projects/AirBench/SINAICA/processed
-    output_dir:       /home/rishi/ML Projects/AirBench/SINAICA/imputed
+    dicts_dir:        data/SINAICA/vis_dicts
+    input_dir:        data/SINAICA/processed
+    output_dir:       data/SINAICA/imputed
     max_gap_hours:    336
     max_data_missing: 30
     max_workers:      24
@@ -313,21 +313,21 @@ sinaica:
 cnemc:
   preprocess:
     zip: false
-    zip_path:   /mnt/2TB_WD/rishi/cnemc_data.zip
-    unzip_dir:  /mnt/2TB_WD/rishi/cnemc_data
-    data_dir:   /home/rishi/ML Projects/AirBench/Datasets/cnemc_data
-    output_dir: /home/rishi/ML Projects/AirBench/CNEMC/processed
+    zip_path:   data/datasets/cnemc_data.zip
+    unzip_dir:  data/datasets/cnemc_data
+    data_dir:   data/datasets/cnemc_data
+    output_dir: data/CNEMC/processed
     start_date: "2022-07-01 00:00:00"
     end_date:   "2025-06-30 23:00:00"
 
   visualise:
     make_dicts: true
-    folder: /home/rishi/ML Projects/AirBench/CNEMC/processed
+    folder: data/CNEMC/processed
     date_range:
       start: "2022-07-01 00:00:00"
       end:   "2025-06-30 23:00:00"
     output:
-      dicts_dir: /home/rishi/ML Projects/AirBench/CNEMC/vis_dicts
+      dicts_dir: data/CNEMC/vis_dicts
       image_dir:  visualize_cnemc_images
     features:
       - "PM2.5 (µg/m³)"
@@ -345,9 +345,9 @@ cnemc:
       "Ozone (µg/m³)": 100
 
   imputation:
-    dicts_dir: /home/rishi/ML Projects/AirBench/CNEMC/vis_dicts
-    input_dir: /home/rishi/ML Projects/AirBench/CNEMC/processed
-    output_dir: /home/rishi/ML Projects/AirBench/CNEMC/imputed
+    dicts_dir: data/CNEMC/vis_dicts
+    input_dir: data/CNEMC/processed
+    output_dir: data/CNEMC/imputed
     max_gap_hours: 336
     max_data_missing: 30
     max_workers: 24
@@ -364,34 +364,34 @@ cnemc:
 
 
 sources:
-  # CPCB/H:
-  #   csv_dir: /home/rishi/ML Projects/AirBench/CPCB/sites_imputed
-  #   output_path: data/hf_dataset/CPCB/H
+  CPCB/H:
+    csv_dir: data/CPCB/sites_imputed
+    output_path: data/hf_dataset/CPCB/H
 
-  # CNEMC/H:
-  #   csv_dir: /home/rishi/ML Projects/AirBench/CNEMC/imputed
-  #   output_path: data/hf_dataset/CNEMC/H
+  CNEMC/H:
+    csv_dir: data/CNEMC/imputed
+    output_path: data/hf_dataset/CNEMC/H
 
-  # AURN/H:
-  #   csv_dir: /home/rishi/ML Projects/AirBench/AURN/imputed
-  #   output_path: data/hf_dataset/AURN/H
+  AURN/H:
+    csv_dir: data/AURN/imputed
+    output_path: data/hf_dataset/AURN/H
 
-  # EPA/H:
-  #   csv_dir: /home/rishi/ML Projects/AirBench/EPA/imputed
-  #   output_path: data/hf_dataset/EPA/H
+  EPA/H:
+    csv_dir: data/EPA/imputed
+    output_path: data/hf_dataset/EPA/H
 
-  # SINAICA/H:
-  #   csv_dir: /home/rishi/ML Projects/AirBench/SINAICA/imputed
-  #   output_path: data/hf_dataset/SINAICA/H
+  SINAICA/H:
+    csv_dir: data/SINAICA/imputed
+    output_path: data/hf_dataset/SINAICA/H
 
-  # EEA_DE/H:
-  #   csv_dir: /home/rishi/ML Projects/AirBench/EEA/DE/imputed
-  #   output_path: data/hf_dataset/EEA_DE/H
+  EEA_DE/H:
+    csv_dir: data/EEA/DE/imputed
+    output_path: data/hf_dataset/EEA_DE/H
 
-  # EEA_FR/H:
-  #   csv_dir: /home/rishi/ML Projects/AirBench/EEA/FR/imputed
-  #   output_path: data/hf_dataset/EEA_FR/H
+  EEA_FR/H:
+    csv_dir: data/EEA/FR/imputed
+    output_path: data/hf_dataset/EEA_FR/H
 
   CNEMC_SMALL/H:
-    csv_dir: /home/rishi/ML Projects/AirBench/CNEMC/cnemc_sampled_200
+    csv_dir: data/CNEMC/cnemc_sampled_200
     output_path: data/hf_dataset/CNEMC_SMALL/H

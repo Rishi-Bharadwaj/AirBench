@@ -99,7 +99,7 @@ def run_experiment(
         if needs_torch:
             print(f"Installing torch==2.10.0 (current: {torch_check.stdout.strip() if torch_check.returncode == 0 else 'not found'})")
             subprocess.run(
-                ["uv", "pip", "install", "torch==2.10.0",
+                ["uv", "pip", "install", "torch==2.10.0", "nvidia-cusparselt-cu12",
                  "--index-url", "https://download.pytorch.org/whl/cu128"],
                 cwd=time_repo, check=True,
             )
@@ -117,6 +117,18 @@ def run_experiment(
     env = os.environ.copy()
     env["TIME_DATASET"] = str(data_dir)
     env["PYTHONWARNINGS"] = "ignore::FutureWarning,ignore::DeprecationWarning"
+
+    # Ensure torch's bundled CUDA libs (e.g. libcusparseLt) are on the loader path.
+    # torch reinstalls wipe any manual symlinks, so we set LD_LIBRARY_PATH instead.
+    torch_lib = subprocess.run(
+        [python_bin, "-c", "import torch, os; print(os.path.join(os.path.dirname(torch.__file__), 'lib'))"],
+        capture_output=True, text=True,
+    )
+    if torch_lib.returncode == 0:
+        torch_lib_dir = torch_lib.stdout.strip()
+        existing = env.get("LD_LIBRARY_PATH", "")
+        if torch_lib_dir not in existing:
+            env["LD_LIBRARY_PATH"] = f"{torch_lib_dir}:{existing}" if existing else torch_lib_dir
 
     print(f"\n{'='*60}")
     print(f"Model:         {model_name}")

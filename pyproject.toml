@@ -1,17 +1,17 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling>=1.18.0"]
 build-backend = "hatchling.build"
 
 [project]
-name = "airbench"
+name = "atmobench"
 version = "0.1.0"
 description = "Air quality time series benchmarking pipeline"
-requires-python = ">=3.10"
+requires-python = ">=3.11, <3.12"
 dependencies = [
     # data pipeline
     "beautifulsoup4",
     "matplotlib",
-    "pandas",
+    "pandas>=2.0.0",
     "pyyaml",
     "rdata",
     "requests",
@@ -19,10 +19,33 @@ dependencies = [
     "statsmodels",
     "tqdm",
     "urllib3",
-    # dataset builder (timebench / HuggingFace Arrow)
-    "datasets",
-    "numpy",
+    # dataset builder (HuggingFace Arrow)
+    "datasets~=2.17.1",
+    "pyarrow==20.0.0",
+    "numpy~=1.26.0",
+    "orjson",
+    "python-dotenv==1.0.0",
+    # eval (timebench core)
+    "gluonts~=0.15.1",
+    "einops==0.7.*",
+    "hydra-core==1.3",
+    "tsfeatures",
+    "ray",
+    "scipy~=1.11.3",
+    "torch==2.10.0",
+    "nvidia-cusparselt-cu12",
+    "lightning>=2.5.0",
+    "setuptools==81.0.0",
+    "statsforecast>=1.7.0",
 ]
 
 [tool.hatch.build.targets.wheel]
 packages = ["eval/src/timebench"]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true

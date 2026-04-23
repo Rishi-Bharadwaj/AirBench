@@ -1,6 +1,6 @@
-# AirBench
+# AtmoBench
 
-**AirBench** is a large-scale benchmark dataset and evaluation suite for short-term air quality forecasting using Time Series Foundation Models (TSFMs). It provides a standardised, reproducible protocol for evaluating TSFMs in a zero-shot setting across multiple countries, pollutants, and monitoring networks.
+**AtmoBench** is a large-scale benchmark dataset and evaluation suite for short-term air quality forecasting using Time Series Foundation Models (TSFMs). It provides a standardised, reproducible protocol for evaluating TSFMs in a zero-shot setting across multiple countries, pollutants, and monitoring networks.
 
 ---
 
@@ -8,7 +8,7 @@
 
 Air quality forecasting is a critical public health problem, yet existing time series benchmarks are dominated by financial, energy, and traffic domains. TSFMs have shown strong zero-shot generalisation across many forecasting tasks, but their performance on environmental monitoring data — characterised by high missingness, multi-pollutant heterogeneity, and cross-country distributional shift — remains poorly understood.
 
-AirBench addresses this gap by introducing a multi-country, multi-pollutant benchmark built from reference-grade ground station data. Rather than proposing a new model, the contribution is the dataset, the evaluation infrastructure, and the empirical findings from running a suite of TSFMs and baselines under a consistent protocol.
+AtmoBench addresses this gap by introducing a multi-country, multi-pollutant benchmark built from reference-grade ground station data. Rather than proposing a new model, the contribution is the dataset, the evaluation infrastructure, and the empirical findings from running a suite of TSFMs and baselines under a consistent protocol.
 
 ---
 
@@ -51,7 +51,7 @@ Data is sourced from seven national and regional air quality monitoring networks
 ## Repository Structure
 
 ```
-airbench/
+AtmoBench/
 ├── pyproject.toml              # unified dependencies for the data pipeline
 │
 ├── data/
@@ -146,9 +146,6 @@ Results are aggregated across datasets and normalised by Seasonal Naïve, with s
 uv venv
 uv pip install -e .
 
-# Kairos requires a separate venv due to transformers version conflicts
-uv venv envs/kairos
-uv pip install -e ".[kairos]" --python envs/kairos
 ```
 
 Most eval dependencies (Chronos, Moirai, TimesFM, etc.) are installed on-demand by `run.py` per model, as declared in `config.yaml`.
@@ -157,13 +154,13 @@ Most eval dependencies (Chronos, Moirai, TimesFM, etc.) are installed on-demand 
 
 ## Citation
 
-If you use AirBench in your work, please cite:
+If you use AtmoBench in your work, please cite:
 
 ```bibtex
-@misc{airbench2025,
-  title   = {AirBench: Benchmarking Time Series Foundation Models on Multi-Country Air Quality Forecasting Data},
-  author  = {TODO},
-  year    = {2025},
+@misc{AtmoBench2026,
+  title   = {AtmoBench: Benchmarking Time Series Foundation Models on Multi-Country Air Quality Forecasting Data},
+  author  = {Anonymous},
+  year    = {2026},
 }
 ```
 
@@ -173,4 +170,4 @@ Please also cite the [TIME framework](https://github.com/zqiao11/TIME) which the
 
 ## License
 
-Dataset redistribution is subject to the terms of each source network. See `data/LICENSES.md` for details.
+Dataset redistribution is subject to the terms of each source network. See the readme included with our datasets on zenodo for details.
