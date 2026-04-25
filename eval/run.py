@@ -99,7 +99,7 @@ def run_experiment(
         if needs_torch:
             print(f"Installing torch==2.10.0 (current: {torch_check.stdout.strip() if torch_check.returncode == 0 else 'not found'})")
             subprocess.run(
-                ["uv", "pip", "install", "torch==2.10.0", "nvidia-cusparselt-cu12",
+                ["uv", "pip", "install", "torch==2.10.0",
                  "--index-url", "https://download.pytorch.org/whl/cu128"],
                 cwd=time_repo, check=True,
             )

@@ -21,7 +21,8 @@ dependencies = [
     "urllib3",
     # dataset builder (HuggingFace Arrow)
     "datasets~=2.17.1",
-    "pyarrow==20.0.0",
+    "pyarrow==23.0.1",
+    "toolz",
     "numpy~=1.26.0",
     "orjson",
     "python-dotenv==1.0.0",
