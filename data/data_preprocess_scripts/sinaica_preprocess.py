@@ -43,20 +43,36 @@ def get_stations() -> pd.DataFrame:
     ])
 
 
+MAX_RETRIES = 3
+RETRY_BACKOFF = 2.0  # seconds; doubles each attempt
+
+
 def get_year(session, station_id, parameter, year) -> pd.DataFrame:
     payload = {
         "estacionId": station_id,
         "param":      parameter,
         "fechaIni":   f"{year}-01-01",
-        "rango":      f"{year}-12-31", # To the best of my understanding from the javascript webpage and the experiments I tried, rango is not actually range, it is end date.  
+        "rango":      f"{year}-12-31", # To the best of my understanding from the javascript webpage and the experiments I tried, rango is not actually range, it is end date.
         "tipoDatos":  "",
     }
-    r = session.post(
-        BASE_URL, data=payload,
-        headers={"Referer": "https://sinaica.inecc.gob.mx/"},
-        verify=False, timeout=30,
-    )
-    r.raise_for_status()
+    last_exc = None
+    for attempt in range(MAX_RETRIES):
+        try:
+            r = session.post(
+                BASE_URL, data=payload,
+                headers={"Referer": "https://sinaica.inecc.gob.mx/"},
+                verify=False, timeout=30,
+            )
+            r.raise_for_status()
+            break
+        except (requests.exceptions.Timeout,
+                requests.exceptions.ConnectionError,
+                requests.exceptions.HTTPError) as e:
+            last_exc = e
+            if attempt < MAX_RETRIES - 1:
+                sleep(RETRY_BACKOFF * (2 ** attempt))
+    else:
+        raise last_exc
 
     match = re.search(r"var dat\s*=\s*(\[.*?\]);", r.text, re.DOTALL)
     if not match:
