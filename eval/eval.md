@@ -83,10 +83,10 @@ python run.py --config config.yaml
 python run.py --config config.yaml model=chronos_bolt
 
 # Run a single dataset
-python run.py --config config.yaml dataset=CPCB/H
+python run.py --config config.yaml dataset=SINAICA/H
 
 # Run a specific model × dataset combination
-python run.py --config config.yaml model=chronos_bolt dataset=CPCB/H
+python run.py --config config.yaml model=chronos_bolt dataset=SINAICA/H
 ```
 
 ### What `run.py` does
@@ -125,7 +125,7 @@ cd eval
 python compute_local_leaderboard.py
 
 # Override dataset or metric
-python compute_local_leaderboard.py --dataset CPCB/H --metric CRPS
+python compute_local_leaderboard.py --dataset SINAICA/H --metric CRPS
 ```
 
 `seasonal_naive` results **must** be present in `output/results/` before running the leaderboard, as all metrics are normalised against it. Run `model=seasonal_naive` first if needed.

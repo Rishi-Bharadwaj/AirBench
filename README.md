@@ -1,14 +1,14 @@
 # AtmoBench
 
-**AtmoBench** is a large-scale benchmark dataset and evaluation suite for short-term air quality forecasting using Time Series Foundation Models (TSFMs). It provides a standardised, reproducible protocol for evaluating TSFMs in a zero-shot setting across multiple countries, pollutants, and monitoring networks.
+**AtmoBench** is a large-scale multi-country, multi-pollutant dataset and benchmark for short-term air quality forecasting using Time Series Foundation Models (TSFMs). It covers 6 major pollutants over a three-year period across 7 countries and 4 continents, with more than 14,000 station-pollutant series, providing a standardised, reproducible protocol for evaluating TSFMs in a zero-shot setting.
 
 ---
 
 ## Background
 
-Air quality forecasting is a critical public health problem, yet existing time series benchmarks are dominated by financial, energy, and traffic domains. TSFMs have shown strong zero-shot generalisation across many forecasting tasks, but their performance on environmental monitoring data — characterised by high missingness, multi-pollutant heterogeneity, and cross-country distributional shift — remains poorly understood.
+Air pollution causes an estimated 7.9 million premature deaths annually (Health Effects Institute, 2025), making accurate forecasting a critical public health priority. Machine learning is increasingly being applied to forecast air pollution levels, yet existing benchmarks remain narrow in both geographic scope and pollutant coverage, and fail to evaluate the latest generation of TSFMs on real-world, large-scale data.
 
-AtmoBench addresses this gap by introducing a multi-country, multi-pollutant benchmark built from reference-grade ground station data. Rather than proposing a new model, the contribution is the dataset, the evaluation infrastructure, and the empirical findings from running a suite of TSFMs and baselines under a consistent protocol.
+AtmoBench addresses this gap by introducing a multi-country, multi-pollutant benchmark built from reference-grade ground station data. Rather than proposing a new model, the contribution is the dataset, the evaluation infrastructure, and the empirical findings from running a suite of 12 TSFMs and baselines under a consistent protocol.
 
 ---
 
@@ -28,6 +28,8 @@ Data is sourced from seven national and regional air quality monitoring networks
 
 **Pollutants:** PM₂.₅, PM₁₀, NO₂, SO₂, CO, O₃
 
+**Scale:** 14,000+ station-pollutant series across 7 countries and 4 continents
+
 **Time range:** July 2022 – June 2025 (3 years, hourly resolution)
 
 **Evaluation protocol:** 168-hour (1-week) context window, 24-hour prediction horizon, evaluated over a 2-year rolling test period.
@@ -45,6 +47,8 @@ Data is sourced from seven national and regional air quality monitoring networks
 **Classical baselines:** Seasonal Naïve, AutoARIMA, AutoETS
 
 **Metrics:** MASE (point accuracy) and CRPS (probabilistic calibration), both normalised by Seasonal Naïve.
+
+**Key findings:** TSFMs broadly outperform statistical baselines, but no single model dominates across all pollutants and geographies. Performance gaps are most pronounced across different urban profiles.
 
 ---
 
@@ -98,6 +102,16 @@ AtmoBench/
 ```
 
 The evaluation harness is adapted from the [TIME framework](https://github.com/zqiao11/TIME).
+
+---
+
+## Downloading the Datasets
+
+The preprocessed and imputed AtmoBench datasets are available on Zenodo:
+
+> [https://doi.org/10.5281/zenodo.19643640](https://doi.org/10.5281/zenodo.19643640)
+
+This includes the HuggingFace Arrow datasets (one per network) ready for use with the evaluation harness. If you prefer to reproduce the datasets from scratch, follow the Data Pipeline steps below.
 
 ---
 
