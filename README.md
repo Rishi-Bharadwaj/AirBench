@@ -172,7 +172,8 @@ If you use AtmoBench in your work, please cite:
 
 ```bibtex
 @misc{AtmoBench2026,
-  title   = {AtmoBench: Benchmarking Time Series Foundation Models on Multi-Country Air Quality Forecasting Data},
+  title   = {AtmoBench: A Multi-Region Benchmark for Air Quality Forecasting
+with Time Series Foundation Models},
   author  = {Anonymous},
   year    = {2026},
 }
