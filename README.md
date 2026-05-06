@@ -60,6 +60,7 @@ AtmoBench/
 │
 ├── data/
 │   ├── data.yaml               # paths and config for all data pipeline stages
+│   ├── data.md                 # data pipeline documentation
 │   ├── data_download_scripts/  # notebooks/scripts to generate download URLs
 │   │   ├── epa_download.ipynb
 │   │   ├── cpcb_download.ipynb
@@ -81,22 +82,36 @@ AtmoBench/
 └── eval/
     ├── config.yaml             # model list, dataset paths, leaderboard settings
     ├── datasets.yaml           # test/val lengths and prediction horizon per dataset
+    ├── eval.md                 # evaluation documentation
     ├── run.py                  # main evaluation runner
     ├── compute_local_leaderboard.py  # aggregates results into ranked tables
     ├── leaderboard_helpers.py  # normalisation and consistency checks
     ├── leaderboard_utils.py    # display utilities, model group definitions
+    ├── data_statistics.ipynb   # dataset statistics and analysis
+    ├── plot_forecast.ipynb     # forecast visualisation
     ├── src/timebench/          # evaluation harness (adapted from TIME framework)
+    │   └── evaluation/
+    │       ├── data.py
+    │       ├── dataset_builder.py
+    │       ├── metrics.py
+    │       ├── saver.py
+    │       └── utils.py
     └── experiments/            # one script per model
         ├── chronos_bolt.py
         ├── chronos2.py
-        ├── moirai.py / moirai2.py
-        ├── timesfm1.0.py / timesfm2.0.py / timesfm2.5.py
+        ├── moirai.py
+        ├── moirai2.py
+        ├── timesfm1.0.py
+        ├── timesfm2.0.py
+        ├── timesfm2.5.py
         ├── tirex_model.py
         ├── visiontspp.py
         ├── sundial.py
         ├── kairos_model.py
         ├── dlinear.py
         ├── patchtst.py
+        ├── lgbm.py
+        ├── deepar.py
         ├── seasonal_naive.py
         └── auto_ets.py
 ```
