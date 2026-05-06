@@ -93,6 +93,20 @@ models:
       context_length: 168
       batch_size: 1024
 
+  kairos:
+    script: experiments/kairos_model.py
+    git_clone:
+      url: https://github.com/foundation-model-research/Kairos.git
+      dest: experiments/Kairos
+    packages:
+      - python-dotenv
+      - pyarrow
+      - huggingface-hub==0.34.0
+      - transformers>=4.43
+    args:
+      context_length: 168
+      batch_size: 1024
+
   seasonal_naive:
     script: experiments/seasonal_naive.py
     packages:
@@ -120,7 +134,14 @@ models:
       max_epochs: 100
       early_stopping_patience: 10
 
-
+  deepar:
+    script: experiments/deepar.py
+    packages:
+      - autogluon.timeseries
+    args:
+      context_length: 168
+      max_epochs: 100
+      early_stopping_patience: 10
 
   patchtst:
     script: experiments/patchtst.py
@@ -131,19 +152,15 @@ models:
       max_epochs: 100
       early_stopping_patience: 10
       
-  kairos:
-    script: experiments/kairos_model.py
-    git_clone:
-      url: https://github.com/foundation-model-research/Kairos.git
-      dest: experiments/Kairos
+  lightgbm:
+    script: experiments/lgbm.py
     packages:
-      - python-dotenv
-      - pyarrow
-      - huggingface-hub==0.34.0
-      - transformers>=4.43
+      - autogluon.timeseries
+      - lightgbm
     args:
+      num_boost_round: 1000
+      early_stopping: 10
       context_length: 168
-      batch_size: 1024
 
 
     
