@@ -183,13 +183,13 @@ Most eval dependencies (Chronos, Moirai, TimesFM, etc.) are installed on-demand 
 If you use AtmoBench in your work, please cite:
 
 ```bibtex
-@inproceedings{bharadwaj2026atmobench,
-  title     = {{AtmoBench}: A Large-Scale Multi-Region Benchmark for Air Quality
-               Forecasting with Time Series Foundation Models},
-  author    = {Bharadwaj, Rishi and Gupta, Manik and Arjunan, Pandarasamy},
-  booktitle = {Proceedings of the 2nd ICML Workshop on Foundation Models for Structured Data},
-  year      = {2026},
-  address   = {Seoul, South Korea},
+@inproceedings{
+bharadwaj2026atmobench,
+title={AtmoBench: A Large-Scale Multi-Region Benchmark for Air Quality Forecasting with Time Series Foundation Models},
+author={Rishi Bharadwaj and Manik Gupta and Pandarasamy Arjunan},
+booktitle={2nd ICML Workshop on Foundation Models for Structured Data},
+year={2026},
+url={https://openreview.net/forum?id=CUXaSOR9fA}
 }
 
 ```
