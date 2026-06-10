@@ -48,7 +48,6 @@ Data is sourced from seven national and regional air quality monitoring networks
 
 **Metrics:** MASE (point accuracy) and CRPS (probabilistic calibration), both normalised by Seasonal Naïve.
 
-**Key findings:** TSFMs broadly outperform statistical baselines, but no single model dominates across all pollutants and geographies. Performance gaps are most pronounced across different urban profiles.
 
 ---
 
@@ -186,12 +185,15 @@ Most eval dependencies (Chronos, Moirai, TimesFM, etc.) are installed on-demand 
 If you use AtmoBench in your work, please cite:
 
 ```bibtex
-@misc{AtmoBench2026,
-  title   = {AtmoBench: A Multi-Region Benchmark for Air Quality Forecasting
-with Time Series Foundation Models},
-  author  = {Anonymous},
-  year    = {2026},
+@inproceedings{bharadwaj2026atmobench,
+  title     = {{AtmoBench}: A Large-Scale Multi-Region Benchmark for Air Quality
+               Forecasting with Time Series Foundation Models},
+  author    = {Bharadwaj, Rishi and Gupta, Manik and Arjunan, Pandarasamy},
+  booktitle = {Proceedings of the 2nd ICML Workshop on Foundation Models for Structured Data},
+  year      = {2026},
+  address   = {Seoul, South Korea},
 }
+
 ```
 
 Please also cite the [TIME framework](https://github.com/zqiao11/TIME) which the evaluation harness is based on.
