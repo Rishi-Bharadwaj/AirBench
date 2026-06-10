@@ -6,9 +6,7 @@
 
 ## Background
 
-Air pollution causes an estimated 7.9 million premature deaths annually (Health Effects Institute, 2025), making accurate forecasting a critical public health priority. Machine learning is increasingly being applied to forecast air pollution levels, yet existing benchmarks remain narrow in both geographic scope and pollutant coverage, and fail to evaluate the latest generation of TSFMs on real-world, large-scale data.
-
-AtmoBench addresses this gap by introducing a multi-country, multi-pollutant benchmark built from reference-grade ground station data. Rather than proposing a new model, the contribution is the dataset, the evaluation infrastructure, and the empirical findings from running a suite of 12 TSFMs and baselines under a consistent protocol.
+Air pollution causes an estimated 7.9 million premature deaths annually, making accurate forecasting a critical public health priority. Machine learning is increasingly being applied to forecast air pollution levels, yet existing benchmarks remain narrow in both geographic scope and pollutant coverage, and fail to evaluate the latest generation of time series foundation models (TSFMs) on real-world, large-scale data. We present AtmoBench, a large-scale multi-country and multi-pollutant dataset and benchmark to address this gap. AtmoBench covers 6 major pollutants over a three-year period across 7 diverse countries and 4 continents, with more than 14,000 station-pollutant series, aiming to provide a comprehensive benchmark for air quality tasks. We benchmark this dataset across 11 leading time series foundation models and classical baselines to assess performance on short-term air quality forecasting. Our results demonstrate that TSFMs are effective zero-shot forecasters and consistently outperform classical baselines, with our top-performing model employing a cross-modal architecture that leverages a vision foundation model for time series forecasting.
 
 ---
 
